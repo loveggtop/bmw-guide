@@ -1,0 +1,20 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1"><title>BMW 기능 가이드</title><style>
+:root{--bg:#f4f5f7;--card:#fff;--tx:#14171a;--mu:#5b6470;--ac:#1c69d4;--bd:#e2e5ea}
+@media(prefers-color-scheme:dark){:root{--bg:#0e1013;--card:#181b20;--tx:#eef0f3;--mu:#9aa3af;--ac:#6aa7ff;--bd:#2a2f37}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:17px/1.6 -apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif}
+.w{max-width:720px;margin:0 auto;padding:16px}h1{font-size:24px;margin:8px 0}.sub{color:var(--mu);font-size:14px}
+a.g{display:block;background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:14px;margin:12px 0;color:var(--tx);text-decoration:none}
+a.g b{font-size:18px}a.g span{display:block;color:var(--mu);font-size:14px;margin-top:4px}.em{color:var(--mu);padding:20px 0}
+</style></head><body><div class="w"><h1>BMW 기능 가이드</h1><div class="sub">영상 캡처로 정리한 조작법 모음 · 개인 참고용</div><div id="list"><div class="em">불러오는 중…</div></div></div>
+<script>
+(async()=>{const L=document.getElementById('list');try{
+const r=await fetch('https://api.github.com/repos/loveggtop/bmw-guide/contents/guides');if(!r.ok)throw new Error(r.status);
+const fs=(await r.json()).filter(f=>f.name.endsWith('.json'));
+const gs=await Promise.all(fs.map(f=>fetch(f.download_url).then(x=>x.json()).catch(()=>null)));
+const a=gs.filter(Boolean).sort((x,y)=>(y.date||'').localeCompare(x.date||''));
+L.innerHTML=a.length?'':'<div class="em">아직 가이드가 없습니다.</div>';
+a.forEach(g=>{const e=document.createElement('a');e.className='g';e.href='guides/'+g.file;
+const b=document.createElement('b');b.textContent=g.title;const s=document.createElement('span');s.textContent=(g.summary||'')+' · '+(g.date||'')+' · 출처: '+(g.source||'');
+e.append(b,s);L.append(e);});
+}catch(e){L.innerHTML='<div class="em">목록을 불러오지 못했습니다. 잠시 후 다시 열어 주세요.</div>';}})();
+</script></body></html>
